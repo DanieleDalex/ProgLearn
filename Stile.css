@@ -1,0 +1,250 @@
+
+h1{font-size:36px}h2{font-size:30px}h3{font-size:24px}h4{font-size:20px}h5{font-size:18px}h6{font-size:16px}
+h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin:10px 0}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #131A22;
+  overflow: hidden;
+  margin-left: 0
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: orangered;
+  color: white
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: orangered;
+  color: white
+}
+
+#menu{
+  font-size:17px
+}
+
+.overlay {
+  position:fixed;
+  display:none;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background-color:rgba(0,0,0,0.5);
+  z-index:2
+}
+
+#coso {
+  transition: 0.3s
+}
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s; /* If you want a transition effect */
+  padding: 20px
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none
+}
+body {
+  font-family: 'Roboto', sans-serif
+}
+.sidebar {
+  position: fixed;
+  top: auto;
+  left: 0;
+  width: 0;
+  z-index: 1;
+  height: 100%;
+  background: #042331;
+  transition: all .5s ease
+}
+.sidebar header {
+  font-size: 22px;
+  color: white;
+  line-height: 70px;
+  text-align: center;
+  background: #orangered;
+  user-select: none
+}
+.sidebar a{
+  display: block;
+  width: 100%;
+  line-height: 65px;
+  font-size: 20px;
+  color: white;
+  padding-left: 40px;
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+  border-top: 1px solid rgba(255,255,255,.1);
+  transition: .4s
+}
+.sidebar a:hover{
+  padding-left: 50px;
+  background-color: orangered
+}
+
+.container{
+  padding:0.01em 16px
+}
+
+.container:after,.container:before{
+  content:"";
+  display:table;
+  clear:both
+}
+
+.red{
+  color:#fff!important;
+  background-color:#f44336!important
+}
+
+.center{
+  width:auto;
+  text-align:center!important
+}
+
+.margin{
+  margin:16px!important
+}
+
+.margin-top{
+  margin-top:16px!important
+}
+
+.margin-bottom{
+  margin-bottom:16px!important
+}
+
+.margin-left{
+  margin-left:16px!important
+}
+
+.margin-right{
+  margin-right:16px!important
+}
+
+.jumbo{
+  font-size:64px!important
+}
+
+.button{border:none;
+  display:inline-block;
+  padding:8px 16px;
+  vertical-align:middle;
+  overflow:hidden;
+  text-decoration:none;
+  color:inherit;
+  background-color:inherit;
+  text-align:center;
+  cursor:pointer;
+  white-space:nowrap
+}
+
+.button:hover{color:#000!important;
+  background-color:#ccc!important
+}
+
+.black{color:#fff!important;
+  background-color:#000!important
+}
+
+.padding-large{
+  padding:12px 24px!important
+}
+
+.large{
+  font-size:18px!important
+}
+
+.row-padding{
+  padding:0 8px
+}
+
+.padding-64{
+  padding-top:64px!important;
+  padding-bottom:64px!important
+}
+
+.content{
+  max-width:980px;
+  margin-left:auto;
+  margin-right:auto
+}
+
+.twothird{
+  float:left;
+  width:66.66666%
+}
+
+.padding-32{
+  padding-top:32px!important;
+  padding-bottom:32px!important
+}
+
+.text-gray{
+  color:#757575!important
+}
+
+.light-gray{
+  color:#000!important;
+  background-color:#f1f1f1!important
+}
+
+.opacity{
+  opacity:0.60
+}
+
+.margin{
+  margin:16px!important
+}
+
+.xlarge{
+  font-size:24px!important
+}
+
+.blu{
+  color:white!important;
+  background-color:#042331!important
+}
+
+.blu2{
+  color:white!important;
+  background-color:#367588!important
+}
+
+
+
+
+
