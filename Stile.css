@@ -45,7 +45,9 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
   right:0;
   bottom:0;
   background-color:rgba(0,0,0,0.5);
-  z-index:2
+
+  z-index:2;
+  cursor:pointer
 }
 
 #coso {
@@ -85,10 +87,11 @@ body {
   top: auto;
   left: 0;
   width: 0;
-  z-index: 1;
   height: 100%;
   background: #042331;
-  transition: all .5s ease
+  transition: all .5s ease;
+  display:none;
+  z-index:5
 }
 .sidebar header {
   font-size: 22px;
@@ -125,11 +128,6 @@ body {
   clear:both
 }
 
-.red{
-  color:#fff!important;
-  background-color:#f44336!important
-}
-
 .center{
   width:auto;
   text-align:center!important
@@ -155,10 +153,6 @@ body {
   margin-right:16px!important
 }
 
-.jumbo{
-  font-size:64px!important
-}
-
 .button{border:none;
   display:inline-block;
   padding:8px 16px;
@@ -176,20 +170,17 @@ body {
   background-color:#ccc!important
 }
 
-.black{color:#fff!important;
-  background-color:#000!important
-}
-
 .padding-large{
   padding:12px 24px!important
 }
 
-.large{
-  font-size:18px!important
-}
-
 .row-padding{
   padding:0 8px
+}
+
+.padding-32{
+  padding-top:32px!important;
+  padding-bottom:32px!important
 }
 
 .padding-64{
@@ -208,30 +199,24 @@ body {
   width:66.66666%
 }
 
-.padding-32{
-  padding-top:32px!important;
-  padding-bottom:32px!important
+.large{
+  font-size:18px!important
+}
+
+.xlarge{
+  font-size:24px!important
+}
+
+.jumbo{
+  font-size:64px!important
 }
 
 .text-gray{
   color:#757575!important
 }
 
-.light-gray{
-  color:#000!important;
-  background-color:#f1f1f1!important
-}
-
 .opacity{
   opacity:0.60
-}
-
-.margin{
-  margin:16px!important
-}
-
-.xlarge{
-  font-size:24px!important
 }
 
 .blu{
@@ -242,6 +227,20 @@ body {
 .blu2{
   color:white!important;
   background-color:#367588!important
+}
+
+.black{color:#fff!important;
+  background-color:#000!important
+}
+
+.red{
+  color:#fff!important;
+  background-color:#f44336!important
+}
+
+.light-gray{
+  color:#000!important;
+  background-color:#f1f1f1!important
 }
 
 
