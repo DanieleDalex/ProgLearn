@@ -25,6 +25,10 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
   color: white
 }
 
+#login, #register{
+  float: right;
+}
+
 /* Add a color to the active/current link */
 .topnav a.active {
   background-color: orangered;
