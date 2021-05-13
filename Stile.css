@@ -30,7 +30,6 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
   background-color: orangered;
   color: white
 }
-
 #menu{
   font-size:17px
 }
@@ -126,6 +125,10 @@ body {
   content:"";
   display:table;
   clear:both
+}
+
+.lang {
+  font-size: 26px;
 }
 
 .center{
@@ -246,7 +249,29 @@ body {
   background-color:#f1f1f1!important
 }
 
+.logo {
+  float:right;
+  width: 200px;
+  height: 200px;
+}
 
+.course_button {
+  font-size: 40px;
+  border: none;
+  padding: 10px;
+  background-color: orangered;
+  color: white;
+  margin-left: 50%;
+  margin-top: 10%;
+  border-radius: 8px
+}
 
+#cb2 {
+  margin-top: 8%
+}
 
+.steelblue {
+  background-color: steelblue;
+  color: white
+}
 
