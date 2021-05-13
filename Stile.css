@@ -254,6 +254,10 @@ body {
   width: 200px;
   height: 200px;
 }
+#jl {
+  width: 200px;
+  height: 300px
+}
 
 .course_button {
   font-size: 40px;
