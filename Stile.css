@@ -152,6 +152,9 @@ body {
 .margin-right{
   margin-right:16px!important
 }
+#title1 {
+  font-family: "Brush Script MT"
+}
 
 .button{border:none;
   display:inline-block;
