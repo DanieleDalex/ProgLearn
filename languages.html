@@ -4,17 +4,18 @@
     <title> Proglearn </title>
 </head>
 <body>
-<link rel="stylesheet" href="Stile.css">
-<script src="Prova.js"> </script>
+<link rel="stylesheet" href="css/Stile.css">
 <div class="topnav">
-    <a onclick="sidebar_open()">&#9776;</a>
-    <a href="Angelo.html">Home</a>
+    <a id="menu" onclick="sidebar_open()">&#9776;</a>
+    <a href="index.html">Home</a>
     <a class="active" href="#languages">Languages</a>
     <a href="data_structures.html">Data Structures</a>
     <a href="conversions.html">Conversions</a>
+    <a id="register" href="Register.html">Register</a>
+    <a id="login" href="Login.html">Login</a>
 </div>
-<div id="mySidebar" style="display:none;z-index:5" class="sidebar">
-    <header>ProgLearn</header>
+<div id="mySidebar" class="sidebar">
+    <header id="header_sidebar">ProgLearn</header>
     <!-- <a href="javascript:void(0)" class="closebtn" onclick="sidebar_close()">&times;</a> -->
     <a href="#">C</a>
     <a href="#">C++</a>
@@ -24,19 +25,56 @@
 
 <div class="overlay" onclick="sidebar_close()" style="cursor:pointer" id="myOverlay"></div>
 
-<!--<div id="main">
-
-  <h2>Collapsed Sidebar</h2>
-  <p>Content...</p>
-</div>-->
-
 <!-- Page content -->
 
+<header class="container red center" style="padding:128px">
+    <h1 class="margin jumbo">Languages</h1>
+    <h2> Select the one you want to learn!</h2>
+</header>
 
-<div id="coso">
-    <iframe width="420" height="315"
-            src="https://www.youtube.com/embed/lGNOwHhVO78">
-    </iframe>
+<div class="row-padding steelblue padding-64 container">
+    <div class="content">
+        <img class="logo" src="img/C_Logo.png">
+        <div class="twothird lang">
+            <h1> C </h1>
+            <h5> Created by Dennis Ritchie in 1973, C is a low level programming language and one of the best for who is approching the coding world.</h5>
+            <button id="cb1" class="course_button"> Start course </button>
+        </div>
+    </div>
 </div>
+
+<div class="row-padding padding-64 container blu2" >
+    <div class="content">
+        <img class="logo" src="img/C++_logo.png">
+        <div class="twothird">
+            <h1>C++</h1>
+            <h5 class="padding-32"> An extenction of C created by Bjarne Stroustrup in 1985.<br>Easier and object oriented</h5>
+            <button id="cb2" class="course_button"> Start course </button>
+        </div>
+    </div>
+</div>
+
+<div class="row-padding midnightblue padding-64 container">
+    <div class="content">
+        <img id="jl" class="logo" src="img/Java_logo.png">
+        <div class="twothird">
+            <h1>Java</h1>
+            <h5 class="padding-32"> An high-level, object oriented programming language.<br> One of the most popular languages nowdays!</h5>
+            <button class="course_button"> Start course </button>
+        </div>
+    </div>
+</div>
+
+<div class="row-padding light-grey padding-64 container blu">
+    <div class="content">
+        <img class="logo" src="img/Python_logo.png">
+        <div class="twothird">
+            <h1>Python</h1>
+            <h5 class="padding-32"> Python is a simple, easy to learn and user friendly high-level programming language with lots of uses. </h5>
+            <button class="course_button"> Start course </button>
+        </div>
+    </div>
+</div>
+<script src="js/Prova.js"> </script>
 </body>
 </html>
