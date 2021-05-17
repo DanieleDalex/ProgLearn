@@ -76,15 +76,39 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
   }
 }
 
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+}
+
 *{
   padding: 0;
   margin: 0;
   list-style: none;
   text-decoration: none
 }
+
 body {
   font-family: 'Roboto', sans-serif
 }
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
 .sidebar {
   position: fixed;
   top: auto;
@@ -168,7 +192,8 @@ body {
   font-family: "Brush Script MT";
 }
 
-.button{border:none;
+.button{
+  border:none;
   display:inline-block;
   padding:8px 16px;
   vertical-align:middle;
@@ -181,8 +206,35 @@ body {
   white-space:nowrap
 }
 
-.button:hover{color:#000!important;
+.button:hover{
+  color:#000!important;
   background-color:#ccc!important
+}
+
+.button2 {
+  background-color: orangered;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button2:hover {
+  opacity: 0.8;
+}
+
+.course_button {
+  font-size: 40px;
+  border: none;
+  padding: 10px;
+  background-color: orangered;
+  color: white;
+  margin-left: 50%;
+  margin-top: 10%;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .padding-large{
@@ -226,12 +278,12 @@ body {
   font-size:64px!important
 }
 
-.text-gray{
-  color:#757575!important
-}
-
 .opacity{
   opacity:0.60
+}
+
+.text-gray{
+  color:#757575!important
 }
 
 .blu{
@@ -258,68 +310,33 @@ body {
   background-color:#f1f1f1!important
 }
 
+.steelblue {
+  background-color: steelblue!important;
+  color: white!important
+}
+
+.midnightblue {
+  background-color: midnightblue!important;
+  color: white!important
+}
+
 .logo {
   float:right;
   width: 200px;
   height: 200px;
 }
+
 #jl {
   width: 200px;
   height: 300px
-}
-
-.course_button {
-  font-size: 40px;
-  border: none;
-  padding: 10px;
-  background-color: orangered;
-  color: white;
-  margin-left: 50%;
-  margin-top: 10%;
-  border-radius: 8px;
-  cursor: pointer;
 }
 
 #cb2 {
   margin-top: 8%
 }
 
-.steelblue {
-  background-color: steelblue;
-  color: white
-}
-.midnightblue {
-  background-color: midnightblue;
-  color: white
-}
 form {
   border: 3px solid #f1f1f1;
-}
-
-/* Full-width inputs */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-/* Set a style for all buttons */
-.button2 {
-  background-color: orangered;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-
-/* Add a hover effect for buttons */
-.button2:hover {
-  opacity: 0.8;
 }
 
 /* Extra style for the cancel button (red) */
@@ -329,27 +346,12 @@ input[type=text], input[type=password] {
   background-color: #f44336;
 }
 
-/* Add padding to containers */
-.container {
-  padding: 16px;
-}
-
 /* The "Forgot password" text */
 span.psw {
   float: right;
   padding-top: 16px;
 }
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-    display: block;
-    float: none;
-  }
-  .cancelbtn {
-    width: 100%;
-  }
-}
 #titleLog {
   padding:32px;
   text-align: center;
@@ -371,12 +373,6 @@ input[type=text]:focus, input[type=password]:focus {
   outline: none;
 }
 
-/* Overwrite default styles of hr */
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
-
 /* Set a style for the submit/register button */
 .registerbtn {
   background-color: orangered;
@@ -391,11 +387,6 @@ hr {
 
 .registerbtn:hover {
   opacity:1;
-}
-
-/* Add a blue text color to links */
-a {
-  color: dodgerblue;
 }
 
 /* Set a grey background color and center the text of the "sign in" section */
