@@ -326,6 +326,12 @@ hr {
   height: 200px;
 }
 
+.logo2 {
+  float:left;
+  width: 200px;
+  height: 200px;
+}
+
 #jl {
   width: 200px;
   height: 300px
@@ -393,4 +399,16 @@ input[type=text]:focus, input[type=password]:focus {
 .signin {
   background-color: #f1f1f1;
   text-align: center;
+}
+
+.play_button {
+  font-size: 100px;
+  border: none;
+  padding: 10px;
+  background-color: orangered;
+  color: white;
+  margin-left: 50%;
+  margin-top: 10%;
+  border-radius: 8px;
+  cursor: pointer;
 }
