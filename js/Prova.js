@@ -10,3 +10,7 @@ function sidebar_close() {
   document.getElementById("mySidebar").style.display = "none";
   document.getElementById("myOverlay").style.display = "none";
 }
+
+function sposta(id) {
+  document.location=id;
+}
