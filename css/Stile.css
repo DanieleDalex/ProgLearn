@@ -416,27 +416,26 @@ input[type=text]:focus, input[type=password]:focus {
 /*game.html */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
+
 .container1{
+  transition: 0.5s;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 1200px;
-  transform-style: preserve-3d;
+  display: flex; /* Serve per mettere i box in linea */
+  justify-content: center; /*i box centrali*/
+  align-items: center; /*box centrali*/
 }
 
 .container1 .box{
-  position: relative;
+  position: relative; /*relative significa che la posizione dipende dagli altri elementi, evita che magari i box si sovrappongono. */
   width: 250px;
   height: 400px;
-  margin: 25px;
+  margin: 25px; /*internamente al box e non esternamente */
   background: #232323;
-  border-radius: 20px;
-  transform-style: preserve-3d;
+  border-radius: 20px; /*bordi ondulati*/
+  transform-style: preserve-3d; /*gli elementi all'interno fluttuano, ovvero fa l'effetto 3d */
 }
 
-.container1 .box::before{
+/*.container1 .box::before{
   content: 'LEARN';
   position: center;
   top: 20px;
@@ -465,12 +464,12 @@ input[type=text]:focus, input[type=password]:focus {
 .container1 .box:hover::before, .container1 .box:hover::after{
   opacity: 0.04;
 
-}
+}*/
 
 
 .container1 .box .name{
-  position:absolute;
-  top:0;
+  position: absolute;
+  top: 0;
   left:0;
   text-align: center;
   color: #fff;
@@ -508,21 +507,6 @@ input[type=text]:focus, input[type=password]:focus {
   bottom: 30px;
   opacity:1;
 }
-
-/*.container1 .box .circle{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-   width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  transition: 0.5s;
-  background: white;
-  transform-style: preserve-3d;
-  z-index: 10;
-  opacity: 1;
-  transform: translate3d(-50%,-50%,50px);
-}*/
 
 .container1 .box .product{
   position: absolute;
