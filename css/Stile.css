@@ -416,7 +416,9 @@ input[type=text]:focus, input[type=password]:focus {
 /*game.html */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-
+#body_games{
+  background-color: darkred;
+}
 .container1{
   transition: 0.5s;
   position: relative;
@@ -430,42 +432,10 @@ input[type=text]:focus, input[type=password]:focus {
   width: 250px;
   height: 400px;
   margin: 25px; /*internamente al box e non esternamente */
-  background: #232323;
+  background: #042331;
   border-radius: 20px; /*bordi ondulati*/
   transform-style: preserve-3d; /*gli elementi all'interno fluttuano, ovvero fa l'effetto 3d */
 }
-
-/*.container1 .box::before{
-  content: 'LEARN';
-  position: center;
-  top: 20px;
-  left: 10px;
-  font-size: 80px;
-  font-weight: 800;
-  color: #ffffff;
-  font-style: italic;
-  opacity: 0;
-  transition: 0.5s;
-}
-
-.container1 .box::after{
-  content: 'NOW';
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  font-size: 5em;
-  font-weight: 900;
-  color: #ffffff;
-  font-style: italic;
-  opacity: 0;
-  transition: 0.5s;
-
-}
-.container1 .box:hover::before, .container1 .box:hover::after{
-  opacity: 0.04;
-
-}*/
-
 
 .container1 .box .name{
   position: absolute;
