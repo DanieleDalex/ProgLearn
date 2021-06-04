@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="css/Stile.css">
+<link rel="stylesheet" href="../static/css/Stile.css">
     <title> Login </title>
 </head>
 <body>
@@ -9,14 +9,15 @@
 
 <div class="topnav">
     <a id="menu" onclick="sidebar_open()">&#9776;</a>
-    <a href="index.html">Home</a>
-    <a href="languages.html">Lessons</a>
-    <a href="games.html">Games</a>
-    <a id="register" href="Register.html">Register</a>
+    <a href="{{url_for('root')}}">Home</a>
+    <a href="{{url_for('languages')}}">Lessons</a>
+    <a href="{{url_for('games')}}">Games</a>
+    <a id="register" href="{{url_for('register')}}">Register</a>
     <a class="active" id="login" href="#">Login</a>
 </div>
 <div id="mySidebar" class="sidebar">
     <header id="header_sidebar">ProgLearn</header>
+    <!--  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>  -->
     <a href="#">About</a>
     <a href="#">Services</a>
     <a href="#">Clients</a>
@@ -29,13 +30,13 @@
     <h1 id="titleLog" class="margin jumbo">ProgLearn</h1>
 </header>
 
-<form method="post">
+<form action="/sign_in" method="POST">
     <div class="container">
         <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" id="uname" required>
+        <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
 
         <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" id="psw" required>
+        <input type="password" placeholder="Enter Password" name="psw" id="psw"  required>
 
         <button class="button2" type="submit">Login</button>
         <label>
@@ -48,6 +49,6 @@
         <span class="psw">Forgot <a href="#">password?</a></span>
     </div>
 </form>
-<script src="js/Prova.js"> </script>
+<script src="../static/js/Prova.js"> </script>
 </body>
 </html>

@@ -4,14 +4,14 @@
   <title> ProgLearn </title>
 </head>
 <body>
-<link rel="stylesheet" href="css/Stile.css">
+<link rel="stylesheet" href="../static/css/Stile.css">
 <div class="topnav">
   <a id="menu" onclick="sidebar_open()">&#9776;</a>
   <a class="active" href="#home">Home</a>
-  <a href="languages.html">Lessons</a>
-  <a href="games.html">Games</a>
-  <a id="register" href="Register.html">Register</a>
-  <a id="login" href="Login.html">Login</a>
+  <a href="{{url_for('languages')}}">Lessons</a>
+  <a href="{{url_for('games')}}">Games</a>
+  <a id="register" href="{{url_for('register')}}">Register</a>
+  <a id="login" href="{{url_for('login')}}">Login</a>
 </div>
 
 <div id="mySidebar" class="sidebar">
@@ -54,6 +54,6 @@
     </div>
   </div>
 </div>
-<script src="js/Prova.js"> </script>
+<script src="../static/js/Prova.js"> </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-function searchvideos(){
+/*function searchvideos(){
     $("#videos").empty();
     let text=document.getElementById("text").value;
     console.log(text);
@@ -13,5 +13,5 @@ function searchvideos(){
         $("#videos").append('<iframe id="videoid" src="'+tmp+'" allowFullScreen></iframe>');
     })})
     console.log(varr)
-}
+}*/
 

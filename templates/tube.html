@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <div id="C_video_container">
+        <form>
+        <button type="button" onclick="searchvideos()">Show video category C</button>
+        </form>
+        <div id="results">
+            <div id="videos">
+
+            </div>
+        </div>
+    </div>
+</form>
+<span id="resul"></span>
+<script>
+    $(document).ready(function(){
+
+    })
+</script>
+<script>
+function searchvideos() {
+    $.ajax({
+        url: "http://127.0.0.1:5000/videosc",
+        data: {
+            easy: "easy learning c",
+            medium: "medium learning c",
+            hard: "hard learning c"
+        },
+        success: function (results) {
+            $("#resul").html(results["url"])
+            $("#videos").append('<iframe src="' + results["url1"] + '" allowFullScreen></iframe>')
+            $("#videos").append('<iframe src="' + results["url2"] + '" allowFullScreen></iframe>')
+            $("#videos").append('<iframe src="' + results["url3"] + '" allowFullScreen></iframe>')
+        }
+    })
+}
+</script>
+<script src="tube.js"></script>
+</body>
+</html>
