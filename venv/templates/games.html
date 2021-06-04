@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Games</title>
+    <link rel="stylesheet" href="../static/css/Stile.css">
+</head>
+<body id="body_games">
+<div class="topnav">
+    <a id="menu" onclick="sidebar_open()">&#9776;</a>
+    <a href="{{url_for('root')}}">Home</a>
+    <a href="{{url_for('languages')}}">Lessons</a>
+    <a class="active" href="#Games">Games</a>
+    <a id="register" href="{{url_for('register')}}">Register</a>
+    <a id="login" href="{{url_for('login')}}">Login</a>
+</div>
+<div id="mySidebar" class="sidebar">
+    <header id="header_sidebar">ProgLearn</header>
+    <!-- <a href="javascript:void(0)" class="closebtn" onclick="sidebar_close()">&times;</a> -->
+    <a href="#">C</a>
+    <a href="#">C++</a>
+    <a href="#">Java</a>
+    <a href="#">Python</a>
+</div>
+
+<div class="overlay" onclick="sidebar_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="container1">
+    <div class="box">
+        <h2 class="name"> C </h2>
+        <a href="#" class="buy">Play Now</a>
+        <div class="circle"></div>
+        <img src="../static/img/C_Logo.png" class="product">
+    </div>
+    <div class="box">
+        <h2 class="name"> C++ </h2>
+        <a href="#" class="buy">Play Now</a>
+        <div class="circle"></div>
+        <img src="../static/img/C++_logo.png" class="product">
+    </div>
+    <div class="box">
+        <h2 class="name"> Java </h2>
+        <a href="#" class="buy">Play Now</a>
+        <div class="circle"></div>
+        <img src="../static/img/Java_logo.png" class="product" style="width: 60%;">
+    </div>
+    <div class="box">
+        <h2 class="name"> Python </h2>
+        <a href="#" class="buy">Play Now</a>
+        <div class="circle"></div>
+        <img src="../static/img/Python_logo.png" class="product">
+    </div>
+</div>
+<script src="js/vanilla-tilt.min.js"></script>
+<script>
+    VanillaTilt.init(document.querySelectorAll(".box"), {
+        max: 25,
+        speed: 400
+    });
+</script>
+<script src="../static/js/Prova.js"> </script>
+</body>
+</html>
