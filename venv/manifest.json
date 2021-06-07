@@ -1,0 +1,9 @@
+{
+  "name": "ProgLearn",
+  "short_name": "ProgLearn",
+  "lang": "en-US",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "orangered",
+  "theme_color": "orangered"
+}
