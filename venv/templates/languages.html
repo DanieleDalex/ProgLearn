@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="../static/css/Stile.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title> Proglearn </title>
 </head>
 <body>
@@ -38,10 +37,7 @@
         <div class="twothird lang">
             <h1> C </h1>
             <h5> Created by Dennis Ritchie in 1973, C is a low level programming language and one of the best for who is approching the coding world.</h5>
-            <button type="button" id="cb1" class="course_button" onclick="search_videos('easy language C','advanced language C','#videos_c')"> Watch lessons </button>
-        </div>
-        <div id="videos_c">
-
+            <button id="cb1" class="course_button"> Watch lessons </button>
         </div>
     </div>
 </div>
@@ -52,10 +48,7 @@
         <div class="twothird">
             <h1>C++</h1>
             <h5 class="padding-32"> An extenction of C created by Bjarne Stroustrup in 1985.<br>Easier and object oriented</h5>
-            <button type="button" id="cb2" class="course_button" onclick="search_videos('easy language C++','advanced language C++','#videos_cplusplus')"> Watch lessons </button>
-        </div>
-        <div id="videos_cplusplus">
-
+            <button id="cb2" class="course_button"> Watch lessons </button>
         </div>
     </div>
 </div>
@@ -66,10 +59,7 @@
         <div class="twothird">
             <h1>Java</h1>
             <h5 class="padding-32"> An high-level, object oriented programming language.<br> One of the most popular languages nowdays!</h5>
-            <button class="course_button" onclick="search_videos('easy language Java','advanced language Java','#videos_java')"> Watch lessons </button>
-        </div>
-        <div id="videos_java">
-
+            <button class="course_button"> Watch lessons </button>
         </div>
     </div>
 </div>
@@ -80,39 +70,10 @@
         <div class="twothird">
             <h1>Python</h1>
             <h5 class="padding-32"> Python is a simple, easy to learn and user friendly high-level programming language with lots of uses. </h5>
-            <button class="course_button" onclick="search_videos('easy language Python','advanced language Python','#videos_python')"> Watch lessons </button>
-        </div>
-        <div id="videos_python">
-
+            <button class="course_button"> Watch lessons </button>
         </div>
     </div>
 </div>
-<script>
-    function search_videos(string1, string2,string3){
-        if ($(string3).children().length == 0){
-            $.ajax({
-                url: "http://127.0.0.1:5000/videos",
-                data: {
-                    easy: string1,
-                    advanced: string2,
-                },
-                success: function (results) {
-                    $(string3).empty()
-                    $(string3).css("padding-top","40%")
-                    $(string3).append('<iframe class="video1" src="' + results["url1"] + '" allowFullScreen></iframe>')
-                    $(string3).append('<iframe class="video2" src="' + results["url2"] + '" allowFullScreen></iframe>')
-                }
-            })
-        }
-        else if (!$(string3).is(':visible')){
-            $(string3).show();
-        }
-        else {
-            $(string3).hide();
-        }
-
-    }
-</script>
 <script src="../static/js/Prova.js"> </script>
 </body>
 </html>
