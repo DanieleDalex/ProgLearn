@@ -12,5 +12,5 @@ function sidebar_close() {
 }
 
 function sposta() {
-  window.location.href.{{url_for('register')}};
+  window.location.href.url_for('register');
 }
