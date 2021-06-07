@@ -16,15 +16,15 @@ domande=["Which function is the first function a C program calls?",
          "Which function reads an input from the console?",
          'Select the output of the following code:\nint main() {\nint x=5;\nint y=3;\nx=x+y*x;\nprintf("%d",x);\nreturn 0;\n}'
          'Complete the code to print the value of x:\nint main() {\nint x=5;\nx=x+4;\n_____________;\nreturn 0;\n}']
-risposte=[["printf()","scanf()","start()","main()"]
-          ["Low level programming language","High level programming language","Markup Language","Not a language"]
-          ["Float","Char","Word","Int"]
-          ["/*comment*/","#comment","<!--comment-->","**comment**"]
-          [".","^","?",";"]
-          ["--","=","==","++"]
-          ["scanf()","printf()","system()","main()"]
-          ["printf()","push()","start()","scanf()"]
-          ["5","40","20","35"]
+risposte=[["printf()","scanf()","start()","main()"],
+          ["Low level programming language","High level programming language","Markup Language","Not a language"],
+          ["Float","Char","Word","Int"],
+          ["/*comment*/","#comment","<!--comment-->","**comment**"],
+          [".","^","?",";"],
+          ["--","=","==","++"],
+          ["scanf()","printf()","system()","main()"],
+          ["printf()","push()","start()","scanf()"],
+          ["5","40","20","35"],
           ['printf("%d,&x")','printf("%d,x")','scanf("%d",&x)',"push(x)"]
           ]
 soluzioni= [3,0,2,0,3,2,1,3,2,1]
@@ -95,5 +95,5 @@ def reg():
         hashpwd = bcrypt.hashpw(pwd.encode("utf-8"), bcrypt.gensalt())
         db.utenti.insert({'username': usname, 'password': hashpwd, 'email': em})
         return "Registrazione avvenuta con successo"
-@app.route("quiz")
-def quiz():
+#@app.route("quiz")
+#def quiz():
