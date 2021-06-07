@@ -97,6 +97,7 @@
                     advanced: string2,
                 },
                 success: function (results) {
+                    $(string3).empty()
                     $(string3).css("padding-top","40%")
                     $(string3).append('<iframe class="video1" src="' + results["url1"] + '" allowFullScreen></iframe>')
                     $(string3).append('<iframe class="video2" src="' + results["url2"] + '" allowFullScreen></iframe>')
