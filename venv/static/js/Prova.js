@@ -11,6 +11,6 @@ function sidebar_close() {
   document.getElementById("myOverlay").style.display = "none";
 }
 
-function sposta(id) {
-  document.location=id;
+function sposta() {
+  window.location.href.{{url_for('register')}};
 }

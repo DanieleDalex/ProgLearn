@@ -1,8 +1,9 @@
 from flask import Flask
-from flask import render_template, request, session, redirect, url_for
+from flask import render_template, request, session, redirect, url_for,jsonify
 from flask_pymongo import PyMongo
 from pymongo import collection
 from pymongo import MongoClient
+from youtubesearchpython import VideosSearch
 import bcrypt
 import pymongo
 
@@ -97,3 +98,26 @@ def reg():
         return "Registrazione avvenuta con successo"
 #@app.route("quiz")
 #def quiz():
+
+@app.route("/videos", methods=['GET'])
+def search_video():
+    url_youtube = "http://www.youtube.com/embed/"
+    easy = request.args.get("easy", "")
+    advanced = request.args.get("advanced", "")
+    print(easy)
+    print(advanced)
+    videosSearch1 = VideosSearch(easy, limit=1)
+    results1 = videosSearch1.result()
+    id1 = results1["result"][0]["id"]
+    url_video1 = url_youtube + id1
+    videosSearch2 = VideosSearch(advanced, limit=1)
+    results2 = videosSearch2.result()
+    id2 = results2["result"][0]["id"]
+    url_video2 = url_youtube + id2
+    dict_url = {"url1": url_video1, "url2": url_video2}
+    print(dict_url)
+    return jsonify(dict_url)
+
+
+
+

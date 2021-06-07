@@ -554,3 +554,19 @@ input[type=text]:focus, input[type=password]:focus {
 .container1 .box:nth-child(4) .buy{
   background: #379bf7;
 }
+
+.video1{
+  float: left;
+  width: 40%;
+  height: 200px;
+  border:none;
+}
+
+.video2{
+  float: right;
+  width: 40%;
+  height: 200px;
+  border:none;
+}
+
+
