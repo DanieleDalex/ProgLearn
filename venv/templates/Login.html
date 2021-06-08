@@ -42,6 +42,15 @@
         <label>
             <input type="checkbox" checked="checked" id="remember"> Remember me
         </label>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{ message }}</p><br>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
     </div>
 
     <div class="container" style="background-color:#f1f1f1">

@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template, request, session, redirect, url_for,jsonify
+from flask import render_template, request, session, redirect, url_for,jsonify,flash
 from flask_pymongo import PyMongo
 from pymongo import collection
 from pymongo import MongoClient
@@ -31,8 +31,9 @@ risposte=[["printf()","scanf()","start()","main()"],
 soluzioni= [3,0,2,0,3,2,1,3,2,1]
 app = Flask(__name__)
 
+app.secret_key="hello"
 app.config["MONGO_DBNAME"] = "mg_db"
-app.config["MONGO_URI"] = "mongodb://localhost:27017/mg_db"
+app.config["MONGO_URI"] = "mongodb://192.168.99.100:27017/mg_db"
 mongo = PyMongo(app)
 db = mongo.db
 
@@ -77,8 +78,10 @@ def sign_in():
     userlog = db.utenti.find_one({'username': username})
     if userlog:
         if bcrypt.hashpw(pwd.encode('utf-8'), userlog['password']) == userlog['password']:
-            return "Login avvenuto con successo"
-    return "Combinazione Nome utente/Password inesistente"
+            session["username"]=username
+            return redirect(url_for("user"))
+    flash ("Combinazione Nome utente/Password inesistente")
+    return redirect(url_for("login"))
 
 
 @app.route("/reg", methods=('GET', 'POST'))
@@ -89,15 +92,25 @@ def reg():
     pwd2 = req.get("psw-repeat")
     em = req.get("email")
     if pwd != pwd2:
-        return "Inserite due password differenti"
+        flash("Inserite due password differenti")
+        return redirect(url_for("register"))
     elif db.utenti.find_one({'username': usname}):
-        return "Il nome utente esiste già"
+        flash("Il nome utente esiste già")
+        return redirect(url_for("register"))
     else:
         hashpwd = bcrypt.hashpw(pwd.encode("utf-8"), bcrypt.gensalt())
         db.utenti.insert({'username': usname, 'password': hashpwd, 'email': em})
-        return "Registrazione avvenuta con successo"
+        return redirect(url_for("login"))
 #@app.route("quiz")
 #def quiz():
+
+@app.route("/user")
+def user():
+    if "username" in session:
+        return redirect(url_for("root"))
+    else:
+        return redirect(url_for("login"))
+
 
 @app.route("/videos", methods=['GET'])
 def search_video():
@@ -117,6 +130,17 @@ def search_video():
     dict_url = {"url1": url_video1, "url2": url_video2}
     print(dict_url)
     return jsonify(dict_url)
+
+@app.route("/user/profile")
+def profile():
+    pass;
+
+@app.route("/logout")
+def logout():
+    session.pop("username",None)
+    return redirect(url_for("root"))
+
+
 
 
 
