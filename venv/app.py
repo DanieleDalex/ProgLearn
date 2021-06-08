@@ -4,9 +4,10 @@ from flask_pymongo import PyMongo
 from pymongo import collection
 from pymongo import MongoClient
 from youtubesearchpython import VideosSearch
+import quiz
 import bcrypt
 import pymongo
-
+"""
 domande=["Which function is the first function a C program calls?",
          "C is a:",
          "Which of these is not an existing type?",
@@ -29,6 +30,7 @@ risposte=[["printf()","scanf()","start()","main()"],
           ['printf("%d,&x")','printf("%d,x")','scanf("%d",&x)',"push(x)"]
           ]
 soluzioni= [3,0,2,0,3,2,1,3,2,1]
+"""
 app = Flask(__name__)
 
 app.secret_key="hello"
@@ -139,6 +141,11 @@ def profile():
 def logout():
     session.pop("username",None)
     return redirect(url_for("root"))
+
+@app.route("/quiz_form")
+def quiz_form():
+    questions = quiz.quiz
+    return render_template("quiz.html", q=questions)
 
 
 

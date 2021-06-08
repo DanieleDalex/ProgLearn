@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div id="container_quizs">
+    {% set nquiz = q["nquiz"] %}
+    {% for c in nquiz.keys() %}
+    <p>{{c}}</p>
+    {% for val in nquiz[c] %}
+    <input type="radio" id="{{val}}" value="{{val}}">
+    <label for="{{val}}">{{val}}</label><br>
+    {% endfor %}
+    {% endfor %}
+    {%set cquiz = q["quiz code"] %}
+    {% for c in cquiz.keys() %}
+    <pre><code>{{c}}</code></pre>
+    {% for val in cquiz[c] %}
+    <input type="radio" id="{{val}}" value="{{val}}">
+    <label for="{{val}}">{{val}}</label><br>
+    {% endfor %}
+    {% endfor %}
+</div>
+</body>
+</html>
