@@ -32,7 +32,7 @@ risposte=[["printf()","scanf()","start()","main()"],
 soluzioni= [3,0,2,0,3,2,1,3,2,1]
 """
 app = Flask(__name__)
-
+app.config['JSON_SORT_KEYS'] = False
 app.secret_key="hello"
 app.config["MONGO_DBNAME"] = "mg_db"
 app.config["MONGO_URI"] = "mongodb://192.168.99.100:27017/mg_db"
@@ -71,6 +71,9 @@ def register():
 def games():
     return render_template("games.html")
 
+@app.route("/quiz")
+def quiz_id():
+    return render_template("quiz.html")
 
 @app.route("/sign_in", methods=('GET', 'POST'))
 def sign_in():
@@ -141,11 +144,20 @@ def profile():
 def logout():
     session.pop("username",None)
     return redirect(url_for("root"))
-
+'''
+@app.route("/quiz_form")
+def quiz_form():
+    if "username" in session:
+        questions = quiz.quiz
+        return render_template("quiz.html", q=questions)
+    else:
+        return redirect(url_for("login"))
+'''
 @app.route("/quiz_form")
 def quiz_form():
     questions = quiz.quiz
-    return render_template("quiz.html", q=questions)
+    return jsonify(questions)
+
 
 
 

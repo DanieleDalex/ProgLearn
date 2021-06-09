@@ -7,22 +7,82 @@
 </head>
 <body>
 <div id="container_quizs">
-    {% set nquiz = q["nquiz"] %}
-    {% for c in nquiz.keys() %}
-    <p>{{c}}</p>
-    {% for val in nquiz[c] %}
-    <input type="radio" id="{{val}}" value="{{val}}">
-    <label for="{{val}}">{{val}}</label><br>
-    {% endfor %}
-    {% endfor %}
-    {%set cquiz = q["quiz code"] %}
-    {% for c in cquiz.keys() %}
-    <pre><code>{{c}}</code></pre>
-    {% for val in cquiz[c] %}
-    <input type="radio" id="{{val}}" value="{{val}}">
-    <label for="{{val}}">{{val}}</label><br>
-    {% endfor %}
-    {% endfor %}
+
 </div>
+<button type=button id="button1" onclick="check_radio()">Check Answer</button>
+<p id="message"></p>
+<button type=button id="button2" onclick="show_question()">Next Question</button>
+
+<script>
+    var questions_normal
+    var questions_code
+    var questions_normal_keys
+    var questions_code_keys
+    var answers
+    var i=0
+    var k=0
+    var x=0
+    function callback(results) {
+        console.log(results)
+        questions_normal = results["normal_quiz"]
+        questions_code = results["code_quiz"]
+        answers = results["answers"]
+        console.log(questions_normal)
+        questions_normal_keys = Object.keys(questions_normal)
+        questions_code_keys = Object.keys(questions_code)
+        show_question()
+    }
+    $(document).ready(function(){
+        $.ajax({
+            url: "http://127.0.0.1:5000/quiz_form",
+            success: callback
+        })
+    })
+    function show_question() {
+            $("#message").hide()
+            $("#button2").hide()
+            $("#button1").show()
+            $("#container_quizs").empty()
+            if (i < questions_normal_keys.length) {
+                $("#container_quizs").append('<p> "' + questions_normal_keys[i] + '" </p>')
+                for (let j = 0; j < questions_normal[questions_normal_keys[i]].length; j++) {
+                    $("#container_quizs").append('<input type="radio" class="radios" name="input" value="'+ questions_normal[questions_normal_keys[i]][j]+'"> "' + questions_normal[questions_normal_keys[i]][j] + '"')
+                }
+                i = i + 1
+            } else if (k < questions_code_keys.length) {
+                $("#container_quizs").append('<pre><code> "' + questions_code_keys[k] + '" </code></pre>')
+                for (let j = 0; j < questions_code[questions_code_keys[k]].length; j++) {
+                    $("#container_quizs").append('<input type="radio" name="input" value="'+ questions_code[questions_code_keys[k]][j]+'"> "' + questions_code[questions_code_keys[k]][j] + '" </input>')
+                }
+                k = k + 1
+            }
+            if (i==questions_normal_keys.length && k==questions_code_keys.length) {
+                $("#button1").text("SHOW SCORE")
+            }
+
+        }
+
+    function check_radio(){
+        $("#message").show()
+        if( $('input:radio', "#container_quizs").is(':checked')){
+            let checked = $('input[name="input"]:checked').val()
+            console.log(typeof(checked))
+            if (answers[x]==checked){
+                $("#message").text("RISPOSTA CORRETTA")
+                // QUA POI VA AGGIUNTO IL CSS PER EVIDENZIARE IN VERDE ECC..
+            }
+            else{
+                $("#message").text("RISPOSTA SBAGLIATA, LA RISPOSTA GIUSTA E'"+ answers[x])
+                // QUA POI VA AGGIUNTO IL CSS PER EVIDENZIARE IN ROSSO LA RISPOSTA CORRETTA...
+            }
+            x=x+1
+            $("#button1").hide()
+            $("#button2").show()
+        }
+        else{
+            $("#message").text("SELEZIONA UNA RISPOSTA")
+        }
+    }
+</script>
 </body>
 </html>
