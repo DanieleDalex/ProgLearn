@@ -2,6 +2,8 @@ let cacheName = 'pwa01';
 
 let filesToCache = [
     'templates/index.html',
+    'templates/games.html',
+    'templates/languages.html',
     'static/css/stile.css',
     'static/js/main.js'
 ];

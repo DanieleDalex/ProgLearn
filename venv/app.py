@@ -35,7 +35,7 @@ app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 app.secret_key="hello"
 app.config["MONGO_DBNAME"] = "mg_db"
-app.config["MONGO_URI"] = "mongodb://192.168.99.100:27017/mg_db"
+app.config["MONGO_URI"] = "mongodb://localhost:27017/mg_db"
 mongo = PyMongo(app)
 db = mongo.db
 

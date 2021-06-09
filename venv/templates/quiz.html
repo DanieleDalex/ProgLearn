@@ -20,6 +20,7 @@
     var answers
     var i=0
     var x=0
+    var correct=0
     function callback(results) {
         console.log(results)
         questions = results["questions"]
@@ -46,23 +47,33 @@
                 }
                 i = i + 1
             }
-            if (i==questions_normal_keys.length) {
-                $("#button1").text("SHOW SCORE")
+            if (i > questions_keys.length)  {
+                $("#message").text("Final score= " + correct)
+                $("#message").show()
+                $("#button1").text("Back to games")
             }
+
 
         }
 
     function check_radio(){
+        if (i > questions_keys.length) {
+            window.location.assign("{{url_for('games')}}")
+            return
+        }
         $("#message").show()
         if( $('input:radio', "#container_quizs").is(':checked')){
             let checked = $('input[name="input"]:checked').val()
             console.log(typeof(checked))
             if (answers[x]==checked){
-                $("#message").text("RISPOSTA CORRETTA")
+                $("#message").text("Correct answer!")
+                correct++
+                $('input[name="input"]:checked').attr("id","cor")
+                document.getElementById("cor").style.backgroundColor = "green"
                 // QUA POI VA AGGIUNTO IL CSS PER EVIDENZIARE IN VERDE ECC..
             }
             else{
-                $("#message").text("RISPOSTA SBAGLIATA, LA RISPOSTA GIUSTA E'"+ answers[x])
+                $("#message").text("Wrong answer, the correct answer is : "+ answers[x])
                 // QUA POI VA AGGIUNTO IL CSS PER EVIDENZIARE IN ROSSO LA RISPOSTA CORRETTA...
             }
             x=x+1
@@ -70,7 +81,11 @@
             $("#button2").show()
         }
         else{
-            $("#message").text("SELEZIONA UNA RISPOSTA")
+            $("#message").text("Choose an answer")
+        }
+        if (i == questions_keys.length) {
+            $("#button2").text("SHOW SCORE")
+            i++
         }
     }
 </script>
