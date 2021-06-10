@@ -4,40 +4,29 @@ from flask_pymongo import PyMongo
 from pymongo import collection
 from pymongo import MongoClient
 from youtubesearchpython import VideosSearch
-import quiz
+import quiz_c_base
+import quiz_c_medium
+import quiz_c_advanced
+import quiz_cplusplus_base
+import quiz_cplusplus_medium
+import quiz_cplusplus_advanced
+import quiz_java_base
+import quiz_java_medium
+import quiz_java_advanced
+import quiz_python_base
+import quiz_python_medium
+import quiz_python_advanced
 import bcrypt
 import pymongo
-"""
-domande=["Which function is the first function a C program calls?",
-         "C is a:",
-         "Which of these is not an existing type?",
-         "Which of these is the correct syntax for comments?",
-         "Most of C lines end with:",
-         "Which operator compares 2 variables?",
-         "Which function prints something on the console?",
-         "Which function reads an input from the console?",
-         'Select the output of the following code:\nint main() {\nint x=5;\nint y=3;\nx=x+y*x;\nprintf("%d",x);\nreturn 0;\n}'
-         'Complete the code to print the value of x:\nint main() {\nint x=5;\nx=x+4;\n_____________;\nreturn 0;\n}']
-risposte=[["printf()","scanf()","start()","main()"],
-          ["Low level programming language","High level programming language","Markup Language","Not a language"],
-          ["Float","Char","Word","Int"],
-          ["/*comment*/","#comment","<!--comment-->","**comment**"],
-          [".","^","?",";"],
-          ["--","=","==","++"],
-          ["scanf()","printf()","system()","main()"],
-          ["printf()","push()","start()","scanf()"],
-          ["5","40","20","35"],
-          ['printf("%d,&x")','printf("%d,x")','scanf("%d",&x)',"push(x)"]
-          ]
-soluzioni= [3,0,2,0,3,2,1,3,2,1]
-"""
+
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 app.secret_key="hello"
 app.config["MONGO_DBNAME"] = "mg_db"
-app.config["MONGO_URI"] = "mongodb://localhost:27017/mg_db"
+app.config["MONGO_URI"] = "mongodb://192.168.99.100:27017/mg_db"
 mongo = PyMongo(app)
 db = mongo.db
+
 
 utenti = db["utenti"]
 
@@ -66,14 +55,28 @@ def login():
 def register():
     return render_template("Register.html")
 
-
 @app.route("/games")
 def games():
-    return render_template("games.html")
+    if "username" in session:
+        user = session["username"]
+        c_level= utenti.find_one({'username':user},{'C_level':1})
+        cplusplus_level = utenti.find_one({'username': user}, {'Cplusplus_level': 1})
+        java_level = utenti.find_one({'username': user}, {'Java_level': 1})
+        python_level = utenti.find_one({'username': user}, {'Python_level': 1})
+        c_level=c_level["C_level"]
+        cplusplus_level=cplusplus_level["Cplusplus_level"]
+        java_level=java_level["Java_level"]
+        python_level=python_level["Python_level"]
+        return render_template("games.html", c=c_level, cplusplus=cplusplus_level, java=java_level, python=python_level)
+    else:
+        return render_template("games.html")
 
 @app.route("/quiz")
 def quiz_id():
-    return render_template("quiz.html")
+    if "username" in session:
+        return render_template("quiz.html")
+    else:
+        return redirect(url_for("login"))
 
 @app.route("/sign_in", methods=('GET', 'POST'))
 def sign_in():
@@ -104,7 +107,7 @@ def reg():
         return redirect(url_for("register"))
     else:
         hashpwd = bcrypt.hashpw(pwd.encode("utf-8"), bcrypt.gensalt())
-        db.utenti.insert({'username': usname, 'password': hashpwd, 'email': em})
+        db.utenti.insert({'username': usname, 'password': hashpwd, 'email': em, 'C_level': 'base', 'Cplusplus_level': 'base', 'Java_level': 'base', 'Python_level': 'base'})
         return redirect(url_for("login"))
 #@app.route("quiz")
 #def quiz():
@@ -153,10 +156,77 @@ def quiz_form():
     else:
         return redirect(url_for("login"))
 '''
-@app.route("/quiz_form")
-def quiz_form():
-    questions = quiz.quiz
-    return jsonify(questions)
+
+@app.route("/save_score", methods=['POST'])
+def save_score():
+    if request.method == 'POST':
+        score = float(request.form.get("score","0"))
+        lan = request.form.get("lan"," ")
+        print(lan)
+        if score > ((score*50)/100):
+            user=session["username"]
+            level = utenti.find_one({'username': user}, {lan: 1})
+            level = level[lan]
+            print(level)
+            if level == "base":
+                utenti.update({"username": user}, { "$set": {lan: "medium"}})
+            elif level == "medium":
+                utenti.update({"username": user}, {"$set": {lan: "advanced"}})
+        return "ok"
+    return "no"
+
+@app.route("/quiz_c/<level>")
+def quiz_c(level):
+    lan="C_level"
+    questions = quiz_c_base.quiz
+    if level == "base":
+        questions = quiz_c_base.quiz
+    elif level == "medium":
+        questions = quiz_c_medium.quiz
+    elif level == "advanced":
+        questions = quiz_c_medium.quiz
+    return render_template("quiz.html",q=questions, lan=lan)
+
+@app.route("/quiz_cplusplus/<level>")
+def quiz_cplusplus(level):
+    lan="Cplusplus_level"
+    questions = quiz_cplusplus_base.quiz
+    if level == "base":
+        questions = quiz_cplusplus_base.quiz
+    elif level == "medium":
+        questions = quiz_cplusplus_medium.quiz
+    elif level == "advanced":
+        questions = quiz_cplsuplus_advanced.quiz
+    return render_template("quiz.html",q=questions, lan=lan)
+
+@app.route("/quiz_java/<level>")
+def quiz_java(level):
+    lan="Java_level"
+    questions = quiz_java_base.quiz
+    if level == "base":
+        questions = quiz_java_base.quiz
+    elif level == "medium":
+        questions = quiz_java_medium.quiz
+    elif level == "advanced":
+        questions = quiz_java_advanced.quiz
+    return render_template("quiz.html",q=questions, lan=lan)
+
+@app.route("/quiz_python/<level>")
+def quiz_python(level):
+    lan="Python_level"
+    questions = quiz_python_base.quiz
+    if level == "base":
+        questions = quiz_python_base.quiz
+    elif level == "medium":
+        questions = quiz_python_medium.quiz
+    elif level == "advanced":
+        questions = quiz_python_advanced.quiz
+    return render_template("quiz.html",q=questions, lan=lan)
+
+
+
+
+
 
 
 

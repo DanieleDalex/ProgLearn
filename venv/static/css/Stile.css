@@ -434,7 +434,7 @@ input[type=text]:focus, input[type=password]:focus {
 .container1 .box{
   position: relative; /*relative significa che la posizione dipende dagli altri elementi, evita che magari i box si sovrappongono. */
   width: 250px;
-  height: 400px;
+  height: 500px;
   margin: 25px; /*internamente al box e non esternamente */
   background: #042331;
   border-radius: 20px; /*bordi ondulati*/
@@ -463,13 +463,16 @@ input[type=text]:focus, input[type=password]:focus {
 
 .container1 .box .buy{
   position: absolute;
-  bottom: 0;
   left: 50%;
+  margin-top: auto;
   transform-style: preserve-3d;
   transform: translate3d(-50%,0,75px);
   color: white;
   background: #333;
-  padding: 10px 25px;
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  padding-right: 5px;
   border-radius: 30px;
   text-decoration: none;
   transition: 0.5s;
@@ -477,8 +480,19 @@ input[type=text]:focus, input[type=password]:focus {
   z-index: 10;
 }
 
+.buy1{
+  bottom:100px
+}
+
+.buy2{
+  bottom: 50px
+}
+
+.buy3{
+  bottom: 0px
+}
+
 .container1 .box:hover .buy{
-  bottom: 30px;
   opacity:1;
 }
 
