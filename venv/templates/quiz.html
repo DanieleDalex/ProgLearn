@@ -141,14 +141,10 @@ pre{
                 $("#final_button").show()
             }
 
-
         }
 
     function check_radio(){
         let temp
-        if (i > questions_keys.length) {
-
-        }
         $("#message").show()
         if( $('input:radio', "#container_quizs").is(':checked')){
             let checked = $('input[name="input"]:checked').val()
@@ -191,7 +187,6 @@ pre{
                 },
                 success : function(data){
                     window.location.assign("{{url_for('games')}}")
-
 
                 }
             })
