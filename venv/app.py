@@ -31,13 +31,13 @@ db = mongo.db
 utenti = db["utenti"]
 
 
-@app.route("/")
-def root():
-    return render_template("index.html")
-
 @app.route('/service-worker.js')
 def sw():
     return app.send_static_file("service-worker.js")
+
+@app.route("/")
+def root():
+    return render_template("index.html")
 
 @app.route("/languages")
 def languages():
