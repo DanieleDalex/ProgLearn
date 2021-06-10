@@ -91,7 +91,7 @@ pre{
 <div id="container_quizs">
 
 </div>
-<button type=button id="final_button" class="question" onclick="pass_score()">Check Score</button>
+<button type=button id="final_button" class="question" onclick="pass_score()">Back to Quizzes</button>
 <button type=button id="button1" class="question" onclick="check_radio()">Check Answer</button>
 <button type=button id="button2" class="question" onclick="show_question()">Next Question</button>
 <p id="message" class="question"></p>
@@ -135,6 +135,7 @@ pre{
                 i = i + 1
             }
             if (i > questions_keys.length)  {
+                $("#button1").hide()
                 $("#message").text("Final score = " + correct)
                 $("#message").show()
                 $("#final_button").show()
