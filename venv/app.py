@@ -23,7 +23,7 @@ app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 app.secret_key="hello"
 app.config["MONGO_DBNAME"] = "mg_db"
-app.config["MONGO_URI"] = "mongodb://192.168.99.100:27017/mg_db"
+app.config["MONGO_URI"] = "mongodb://localhost:27017/mg_db"
 mongo = PyMongo(app)
 db = mongo.db
 
@@ -163,10 +163,11 @@ def quiz_form():
 @app.route("/save_score", methods=['POST'])
 def save_score():
     if request.method == 'POST':
+        quest = float(request.form.get("quest","0"))
         score = float(request.form.get("score","0"))
         lan = request.form.get("lan"," ")
         print(lan)
-        if score > ((score*50)/100):
+        if score > ((quest*50)/100):
             user=session["username"]
             level = utenti.find_one({'username': user}, {lan: 1})
             level = level[lan]
@@ -187,7 +188,7 @@ def quiz_c(level):
     elif level == "medium":
         questions = quiz_c_medium.quiz
     elif level == "advanced":
-        questions = quiz_c_medium.quiz
+        questions = quiz_c_advanced.quiz
     return render_template("quiz.html",q=questions, lan=lan)
 
 @app.route("/quiz_cplusplus/<level>")
@@ -199,7 +200,7 @@ def quiz_cplusplus(level):
     elif level == "medium":
         questions = quiz_cplusplus_medium.quiz
     elif level == "advanced":
-        questions = quiz_cplsuplus_advanced.quiz
+        questions = quiz_cplusplus_advanced.quiz
     return render_template("quiz.html",q=questions, lan=lan)
 
 @app.route("/quiz_java/<level>")

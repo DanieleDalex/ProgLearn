@@ -7,5 +7,5 @@ quiz={
             "Which function is used to copy a string into another?" : ["StrCopy", "Strcmp", "StringCpy", "Strcpy"],
             "Which directive is used to define macros?" : ["String", "#Define", "Include", "Let"]
         },
-    "answers": ["Null","Return","Strcmp","Strcpy","#Define"]
+    "answers": ["Void","Return","Strcmp","Strcpy","#Define"]
 }
