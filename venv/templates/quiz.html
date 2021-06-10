@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         .correct {background-color:limegreen;  border-radius: 15px;}
         .wrong {background-color:red;  border-radius: 15px;}
@@ -72,12 +73,16 @@
 }
 
 .question{
+    position: relative;
   font-size: 22px;
   font-family: OCR A Std, monospace;
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+pre{
+    white-space: pre-wrap;
 }
 
     </style>
@@ -153,8 +158,6 @@
                 let tmp=document.getElementById(temp)
                 tmp.classList.add("correct");
                 console.log(tmp)
-
-                // QUA POI VA AGGIUNTO IL CSS PER EVIDENZIARE IN VERDE ECC..
             }
             else{
                 temp=answers[x].replace(/\s+/g,"_")
@@ -162,7 +165,6 @@
                 tmp.classList.add("wrong");
                 console.log(tmp)
                 $("#message").text("Wrong answer, the correct answer is : "+ answers[x])
-                // QUA POI VA AGGIUNTO IL CSS PER EVIDENZIARE IN ROSSO LA RISPOSTA CORRETTA...
             }
             x=x+1
             $("#button1").hide()
