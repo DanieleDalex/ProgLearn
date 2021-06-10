@@ -226,15 +226,3 @@ def quiz_python(level):
     elif level == "advanced":
         questions = quiz_python_advanced.quiz
     return render_template("quiz.html",q=questions, lan=lan)
-
-
-
-
-
-
-
-
-
-
-
-
