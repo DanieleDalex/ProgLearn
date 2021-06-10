@@ -1,6 +1,11 @@
 {
   "name": "ProgLearn",
   "short_name": "ProgLearn",
+  "icons": [{
+    "src": "img/ProgLogo.png",
+    "type": "image/png",
+    "sizes": "200x200"
+  }],
   "lang": "en-US",
   "start_url": "index.html",
   "display": "standalone",
