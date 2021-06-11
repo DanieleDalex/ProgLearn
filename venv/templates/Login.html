@@ -8,23 +8,21 @@
 
 
 <div class="topnav">
-    <a id="menu" onclick="sidebar_open()">&#9776;</a>
     <a href="{{url_for('root')}}">Home</a>
     <a href="{{url_for('languages')}}">Lessons</a>
     <a href="{{url_for('games')}}">Games</a>
     <a id="register" href="{{url_for('register')}}">Register</a>
     <a class="active" id="login" href="#">Login</a>
 </div>
-<div id="mySidebar" class="sidebar">
+<!--<div id="mySidebar" class="sidebar">
     <header id="header_sidebar">ProgLearn</header>
-    <!--  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>  -->
     <a href="#">About</a>
     <a href="#">Services</a>
     <a href="#">Clients</a>
     <a href="#">Contact</a>
 </div>
 
-<div class="overlay" onclick="sidebar_close()" style="cursor:pointer" id="myOverlay"></div>
+<div class="overlay" onclick="sidebar_close()" style="cursor:pointer" id="myOverlay"></div>-->
 
 <header >
     <h1 id="titleLog" class="margin jumbo">ProgLearn</h1>
@@ -51,11 +49,6 @@
         {% endif %}
         {% endwith %}
 
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-        <button type="button" id="cancelbtn" class="button2">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
     </div>
 </form>
 <script src="../static/js/main.js"> </script>

@@ -7,44 +7,42 @@
 </head>
 <body id="body_games">
 <div class="topnav">
-    <a id="menu" onclick="sidebar_open()">&#9776;</a>
     <a href="{{url_for('root')}}">Home</a>
     <a href="{{url_for('languages')}}">Lessons</a>
     <a class="active" href="#Games">Games</a>
     {% if session["username"] %}
-    <a id="register" href="{{url_for('register')}}">{{session["username"]}}</a>
+    <a id="register" href="{{url_for('profile',username=session['username'])}}">{{session["username"]}}</a>
     <a id="login" href="{{url_for('logout')}}">Logout</a>
     {% else %}
     <a id="register" href="{{url_for('register')}}">Register</a>
     <a id="login" href="{{url_for('login')}}">Login</a>
     {% endif %}
 </div>
-<div id="mySidebar" class="sidebar">
+<!--<div id="mySidebar" class="sidebar">
     <header id="header_sidebar">ProgLearn</header>
-    <!-- <a href="javascript:void(0)" class="closebtn" onclick="sidebar_close()">&times;</a> -->
     <a href="#">C</a>
     <a href="#">C++</a>
     <a href="#">Java</a>
     <a href="#">Python</a>
 </div>
 
-<div class="overlay" onclick="sidebar_close()" style="cursor:pointer" id="myOverlay"></div>
+<div class="overlay" onclick="sidebar_close()" style="cursor:pointer" id="myOverlay"></div>-->
 
 <div class="container1">
     <div class="box">
         <h2 class="name"> C </h2>
         {% if session["username"] %}
         {% if c=="base" or c=="medium" or c=="advanced" %}
-        <a href="{{url_for('quiz_c',level='base')}}" class="buy buy1" >Base Quiz</a>
+        <a href="{{url_for('quiz_c',level='base')}}" class="quiz0 quiz01" >Base Quiz</a>
         {% endif %}
         {% if c=="medium" or c=="advanced" %}
-        <a href="{{url_for('quiz_c',level='medium')}}" class="buy buy2" >Medium Quiz</a>
+        <a href="{{url_for('quiz_c',level='medium')}}" class="quiz0 quiz02" >Medium Quiz</a>
         {% endif %}
         {% if c=="advanced" %}
-        <a href="{{url_for('quiz_c',level='advanced')}}" class="buy buy3">Advanced Quiz</a>
+        <a href="{{url_for('quiz_c',level='advanced')}}" class="quiz0 quiz03">Advanced Quiz</a>
         {% endif %}
         {% else %}
-        <a href="{{url_for('login')}}" class="buy buy1">Quiz</a>
+        <a href="{{url_for('login')}}" class="quiz0 quiz01">Quiz</a>
         {% endif %}
         <img src="../static/img/C_Logo.png" class="product">
     </div>
@@ -52,16 +50,16 @@
         <h2 class="name"> C++ </h2>
         {% if session["username"] %}
         {% if cplusplus=="base" or cplusplus=="medium" or cplusplus=="advanced" %}
-        <a href="{{url_for('quiz_cplusplus',level='base')}}" class="buy buy1">Base Quiz</a>
+        <a href="{{url_for('quiz_cplusplus',level='base')}}" class="quiz0 quiz01">Base Quiz</a>
         {% endif %}
         {% if cplusplus=="medium" or cplusplus=="advanced" %}
-        <a href="{{url_for('quiz_cplusplus',level='medium')}}" class="buy buy2">Medium Quiz </a>
+        <a href="{{url_for('quiz_cplusplus',level='medium')}}" class="quiz0 quiz02">Medium Quiz </a>
         {% endif %}
         {% if cplusplus=="advanced" %}
-        <a href="{{url_for('quiz_cplusplus',level='advanced')}}" class="buy buy3">Advanced Quiz </a>
+        <a href="{{url_for('quiz_cplusplus',level='advanced')}}" class="quiz0 quiz03">Advanced Quiz </a>
         {% endif %}
         {% else %}
-        <a href="{{url_for('login')}}" class="buy buy1"> Quiz </a>
+        <a href="{{url_for('login')}}" class="quiz0 quiz01"> Quiz </a>
         {% endif %}
         <div class="circle"></div>
         <img src="../static/img/C++_logo.png" class="product">
@@ -70,16 +68,16 @@
         <h2 class="name"> Java </h2>
         {% if session["username"] %}
         {% if java=="base" or java=="medium" or java=="advanced" %}
-        <a href="{{url_for('quiz_java',level='base')}}" class="buy buy1">Base Quiz</a>
+        <a href="{{url_for('quiz_java',level='base')}}" class="quiz0 quiz01">Base Quiz</a>
         {% endif %}
         {% if java=="medium" or java=="advanced" %}
-        <a href="{{url_for('quiz_java',level='medium')}}" class="buy buy2">Medium Quiz</a>
+        <a href="{{url_for('quiz_java',level='medium')}}" class="quiz0 quiz02">Medium Quiz</a>
         {% endif %}
         {% if java=="advanced" %}
-        <a href="{{url_for('quiz_java',level='advanced')}}" class="buy buy3">Advanced Quiz</a>
+        <a href="{{url_for('quiz_java',level='advanced')}}" class="quiz0 quiz03">Advanced Quiz</a>
         {% endif %}
         {% else %}
-        <a href="{{url_for('login')}}" class="buy buy1">Quiz</a>
+        <a href="{{url_for('login')}}" class="quiz0 quiz01">Quiz</a>
         {% endif %}
         <div class="circle"></div>
         <img src="../static/img/Java_logo.png" class="product" style="width: 60%;">
@@ -88,16 +86,16 @@
         <h2 class="name"> Python </h2>
         {% if session["username"] %}
         {% if python=="base" or python=="medium" or python=="advanced" %}
-        <a href="{{url_for('quiz_python',level='base')}}" class="buy buy1">Base Quiz</a>
+        <a href="{{url_for('quiz_python',level='base')}}" class="quiz0 quiz01">Base Quiz</a>
         {% endif %}
         {% if python=="medium" or python=="advanced" %}
-        <a href="{{url_for('quiz_python',level='medium')}}" class="buy buy2">Medium Quiz</a>
+        <a href="{{url_for('quiz_python',level='medium')}}" class="quiz0 quiz02">Medium Quiz</a>
         {% endif %}
         {% if python=="advanced" %}
-        <a href="{{url_for('quiz_python',level='advanced')}}" class="buy buy3">Advanced Quiz</a>
+        <a href="{{url_for('quiz_python',level='advanced')}}" class="quiz0 quiz03">Advanced Quiz</a>
         {% endif %}
         {% else %}
-        <a href="{{url_for('login')}}" class="buy buy1">Quiz</a>
+        <a href="{{url_for('login')}}" class="quiz0 quiz01">Quiz</a>
         {% endif %}
         <div class="circle"></div>
         <img src="../static/img/Python_logo.png" class="product">

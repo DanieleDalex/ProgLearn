@@ -90,7 +90,7 @@ def sign_in():
     if userlog:
         if bcrypt.hashpw(pwd.encode('utf-8'), userlog['password']) == userlog['password']:
             session["username"]=username
-            return redirect(url_for("user"))
+            return redirect(url_for("root"))
     flash ("Combinazione Nome utente/Password inesistente")
     return redirect(url_for("login"))
 
@@ -112,16 +112,6 @@ def reg():
         hashpwd = bcrypt.hashpw(pwd.encode("utf-8"), bcrypt.gensalt())
         db.utenti.insert({'username': usname, 'password': hashpwd, 'email': em, 'C_level': 'base', 'Cplusplus_level': 'base', 'Java_level': 'base', 'Python_level': 'base'})
         return redirect(url_for("login"))
-#@app.route("quiz")
-#def quiz():
-
-@app.route("/user")
-def user():
-    if "username" in session:
-        return redirect(url_for("root"))
-    else:
-        return redirect(url_for("login"))
-
 
 @app.route("/videos", methods=['GET'])
 def search_video():
@@ -142,9 +132,21 @@ def search_video():
     print(dict_url)
     return jsonify(dict_url)
 
-@app.route("/user/profile")
-def profile():
-    pass;
+@app.route("/profile/<username>")
+def profile(username):
+    if "username" in session:
+        user = session["username"]
+        c_level= utenti.find_one({'username':user},{'C_level':1})
+        cplusplus_level = utenti.find_one({'username': user}, {'Cplusplus_level': 1})
+        java_level = utenti.find_one({'username': user}, {'Java_level': 1})
+        python_level = utenti.find_one({'username': user}, {'Python_level': 1})
+        c_level=c_level["C_level"]
+        cplusplus_level=cplusplus_level["Cplusplus_level"]
+        java_level=java_level["Java_level"]
+        python_level=python_level["Python_level"]
+        return render_template("profile.html", c_level=c_level, cplusplus_level=cplusplus_level, java_level=java_level, python_level=python_level)
+    else:
+        return redirect(url_for("login"))
 
 @app.route("/logout")
 def logout():

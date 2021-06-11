@@ -11,19 +11,18 @@
 <body>
 
 <div class="topnav">
-  <a id="menu" onclick="sidebar_open()">&#9776;</a>
   <a class="active" href="#home">Home</a>
   <a href="{{url_for('languages')}}">Lessons</a>
   <a href="{{url_for('games')}}">Games</a>
   {% if session["username"] %}
-  <a id="register" href="{{url_for('profile')}}">{{session["username"]}}</a>
+  <a id="register" href="{{url_for('profile',username=session['username'])}}">{{session["username"]}}</a>
   <a id="login" href="{{url_for('logout')}}">Logout</a>
   {% else %}
   <a id="register" href="{{url_for('register')}}">Register</a>
   <a id="login" href="{{url_for('login')}}">Login</a>
   {% endif %}
 </div>
-<div id="mySidebar" class="sidebar">
+<!--<div id="mySidebar" class="sidebar">
   <header id="header_sidebar">ProgLearn</header>
   <a href="#">About</a>
   <a href="#">Services</a>
@@ -31,14 +30,14 @@
   <a href="#">Contact</a>
 </div>
 
-<div class="overlay" onclick="sidebar_close()" id="myOverlay"></div>
+<div class="overlay" onclick="sidebar_close()" id="myOverlay"></div>-->
 
 <!-- Page content -->
 
 <header class="container red center" style="padding:128px">
   <h1 id="title1" class="margin jumbo">ProgLearn</h1>
   <h2> Learn coding, enjoy coding!</h2>
-  <button type="button" class="button black padding-large large margin-top" onclick="sposta('register')">Get Started</button>
+  <button type="button" class="button black padding-large large margin-top" onclick="sposta('games')">Get Started</button>
 </header>
 
 <div class="row-padding padding-64 container blu2">
@@ -59,7 +58,7 @@
     <div class="twothird">
       <h1>Do it funny!</h1>
       <h5 class="padding-32"> Learning can actually be funny.<br>
-      In Proglearn we've got lots of minigames you can play to train your coding skills. <br>
+      In Proglearn we've got lots of quizzes you can play to train your coding skills. <br>
       Try to beat all of them!</h5>
     </div>
   </div>

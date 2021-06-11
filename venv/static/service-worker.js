@@ -1,6 +1,7 @@
 let cacheName = 'pwa01';
 
 let filesToCache = [
+    'app.py',
     'templates/index.html',
     'templates/games.html',
     'templates/languages.html',

@@ -461,7 +461,7 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 
-.container1 .box .buy{
+.container1 .box .quiz0{
   position: absolute;
   left: 50%;
   margin-top: auto;
@@ -480,19 +480,19 @@ input[type=text]:focus, input[type=password]:focus {
   z-index: 10;
 }
 
-.buy1{
+.quiz01{
   bottom:100px
 }
 
-.buy2{
+.quiz02{
   bottom: 50px
 }
 
-.buy3{
+.quiz03{
   bottom: 0px
 }
 
-.container1 .box:hover .buy{
+.container1 .box:hover .quiz0{
   opacity:1;
 }
 
@@ -508,22 +508,22 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 .container1 .box:nth-child(1) .circle,
-.container1 .box:nth-child(1) .buy{
+.container1 .box:nth-child(1) .quiz0{
   background: #379bf7;
 }
 
 .container1 .box:nth-child(2) .circle,
-.container1 .box:nth-child(2) .buy{
+.container1 .box:nth-child(2) .quiz0{
   background: #379bf7;
 }
 
 .container1 .box:nth-child(3) .circle,
-.container1 .box:nth-child(3) .buy{
+.container1 .box:nth-child(3) .quiz0{
   background: #379bf7;
 }
 
 .container1 .box:nth-child(4) .circle,
-.container1 .box:nth-child(4) .buy{
+.container1 .box:nth-child(4) .quiz0{
   background: #379bf7;
 }
 

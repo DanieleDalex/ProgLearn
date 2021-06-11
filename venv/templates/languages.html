@@ -7,33 +7,31 @@
 </head>
 <body>
 <div class="topnav">
-    <a id="menu" onclick="sidebar_open()">&#9776;</a>
     <a href="{{url_for('root')}}">Home</a>
     <a class="active" href="#languages">Lessons</a>
     <a href="{{url_for('games')}}">Games</a>
     {% if session["username"] %}
-    <a id="register" href="{{url_for('register')}}">{{session["username"]}}</a>
+    <a id="register" href="{{url_for('profile',username=session['username'])}}">{{session["username"]}}</a>
     <a id="login" href="{{url_for('logout')}}">Logout</a>
     {% else %}
     <a id="register" href="{{url_for('register')}}">Register</a>
     <a id="login" href="{{url_for('login')}}">Login</a>
     {% endif %}
 </div>
-<div id="mySidebar" class="sidebar">
+<!--<div id="mySidebar" class="sidebar">
     <header id="header_sidebar">ProgLearn</header>
-    <!-- <a href="javascript:void(0)" class="closebtn" onclick="sidebar_close()">&times;</a> -->
     <a href="#">C</a>
     <a href="#">C++</a>
     <a href="#">Java</a>
     <a href="#">Python</a>
-</div>
+</div>-->
 
 <div class="overlay" onclick="sidebar_close()" style="cursor:pointer" id="myOverlay"></div>
 
 <!-- Page content -->
 
 <header class="container red center" style="padding:128px">
-    <h1 class="margin jumbo">Languages</h1>
+    <h1 class="margin jumbo">Lessons</h1>
     <h2> Select the one you want to learn!</h2>
 </header>
 
