@@ -6,7 +6,11 @@ https://www.python.org/downloads/
 
 https://www.mongodb.com/try/download/community
 
-To run Proglearn is also necessary to create Python Virtual Environments and activate it with:
+For mongodb, if you have docker, you can install mongodb on it.
+
+## Installation
+
+Create Python Virtual Environments and activate it with:
 ```bash
 python -m venv venv
 
@@ -17,7 +21,22 @@ After activate your venv install the packages listed in requirements with pip
 pip install -r requirements.txt
 
 ```
+Set the flask environment variable 
+```bash
+export FLASK_APP=app.py
 
+export FLASK_ENV=development
 
+```
+Now you can run ProgLearn with the command
+```bash
+flask run
+
+```
+Open your browser (recommended Google Chrome) and digits:
+
+http://127.0.0.1:5000
+
+## Creators
 Project made by Vincenzo Mele, Daniele d'Alessandro and Angelo Polizio
 For the Tec web exam at Parthenope University
