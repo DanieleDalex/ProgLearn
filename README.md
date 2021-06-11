@@ -6,8 +6,18 @@ https://www.python.org/downloads/
 
 https://www.mongodb.com/try/download/community
 
-To run Proglearn is also necessary to install the packages listed in requirements 
-you can do it with "pip install -r requirements.txt"
+To run Proglearn is also necessary to create Python Virtual Environments and activate it with:
+```bash
+python -m venv venv
+
+. ./venv/bin/activate
+```
+After activate your venv install the packages listed in requirements with pip
+```bash
+pip install -r requirements.txt
+
+```
+
 
 Project made by Vincenzo Mele, Daniele d'Alessandro and Angelo Polizio
 For the Tec web exam at Parthenope University
