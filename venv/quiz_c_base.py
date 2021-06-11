@@ -2,7 +2,7 @@ quiz={
     "questions":
     {
     "Which function is the first function a C program calls?": ["printf()","scanf()","start()","main()"],
-    "C is a:": ["Low level programming language","High level programming language","Markup Language","Not a language"],
+    "C is a:": ["Programming language","Library","Markup Language","Not a language"],
     "Which of these is not an existing type?": ["Float","Char","Word","Int"],
     "Which of these is the correct syntax for comments?": ["/*comment*/","#comment","<--comment-->","**comment**"],
     "Most of C lines end with:": [".","^","?",";"],
