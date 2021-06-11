@@ -53,9 +53,6 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
   cursor:pointer
 }
 
-#coso {
-  transition: 0.3s
-}
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
   transition: margin-left .5s; /* If you want a transition effect */
@@ -111,47 +108,6 @@ hr {
 
 #cor{
   background-color: green;
-}
-
-.sidebar {
-  position: fixed;
-  top: auto;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: #042331;
-  transition: all .5s ease;
-  display:none;
-  z-index:5
-}
-.sidebar header {
-  font-size: 22px;
-  color: white;
-  line-height: 70px;
-  text-align: center;
-  background: orangered;
-  user-select: none
-}
-.sidebar a{
-  display: block;
-  width: 100%;
-  line-height: 65px;
-  font-size: 20px;
-  color: white;
-  padding-left: 40px;
-  box-sizing: border-box;
-  border-bottom: 1px solid black;
-  border-top: 1px solid rgba(255,255,255,.1);
-  transition: .4s
-}
-.sidebar a:hover{
-  padding-left: 50px;
-  background-color: orangered
-}
-
-#header_sidebar{
-  font-family:  "Brush Script MT" ;
-  font-size: 36px;
 }
 
 .container{

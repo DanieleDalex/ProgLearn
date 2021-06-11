@@ -5,7 +5,7 @@ let filesToCache = [
     'templates/index.html',
     'templates/games.html',
     'templates/languages.html',
-    'static/css/stile.css',
+    'static/css/Style.css',
     'static/js/main.js'
 ];
 

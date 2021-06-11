@@ -62,14 +62,11 @@ def register():
 def games():
     if "username" in session:
         user = session["username"]
-        c_level= utenti.find_one({'username':user},{'C_level':1})
-        cplusplus_level = utenti.find_one({'username': user}, {'Cplusplus_level': 1})
-        java_level = utenti.find_one({'username': user}, {'Java_level': 1})
-        python_level = utenti.find_one({'username': user}, {'Python_level': 1})
-        c_level=c_level["C_level"]
-        cplusplus_level=cplusplus_level["Cplusplus_level"]
-        java_level=java_level["Java_level"]
-        python_level=python_level["Python_level"]
+        level= utenti.find_one({'username':user},{'C_level':1, 'Cplusplus_level': 1, 'Java_level': 1, 'Python_level': 1})
+        c_level=level["C_level"]
+        cplusplus_level=level["Cplusplus_level"]
+        java_level=level["Java_level"]
+        python_level=level["Python_level"]
         return render_template("games.html", c=c_level, cplusplus=cplusplus_level, java=java_level, python=python_level)
     else:
         return render_template("games.html")
@@ -136,14 +133,11 @@ def search_video():
 def profile(username):
     if "username" in session:
         user = session["username"]
-        c_level= utenti.find_one({'username':user},{'C_level':1})
-        cplusplus_level = utenti.find_one({'username': user}, {'Cplusplus_level': 1})
-        java_level = utenti.find_one({'username': user}, {'Java_level': 1})
-        python_level = utenti.find_one({'username': user}, {'Python_level': 1})
-        c_level=c_level["C_level"]
-        cplusplus_level=cplusplus_level["Cplusplus_level"]
-        java_level=java_level["Java_level"]
-        python_level=python_level["Python_level"]
+        level= utenti.find_one({'username':user},{'C_level':1, 'Cplusplus_level': 1, 'Java_level': 1, 'Python_level': 1})
+        c_level=level["C_level"]
+        cplusplus_level=level["Cplusplus_level"]
+        java_level=level["Java_level"]
+        python_level=level["Python_level"]
         return render_template("profile.html", c_level=c_level, cplusplus_level=cplusplus_level, java_level=java_level, python_level=python_level)
     else:
         return redirect(url_for("login"))
@@ -152,15 +146,6 @@ def profile(username):
 def logout():
     session.pop("username",None)
     return redirect(url_for("root"))
-'''
-@app.route("/quiz_form")
-def quiz_form():
-    if "username" in session:
-        questions = quiz.quiz
-        return render_template("quiz.html", q=questions)
-    else:
-        return redirect(url_for("login"))
-'''
 
 @app.route("/save_score", methods=['POST'])
 def save_score():
