@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Title</title>
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .correct {background-color:limegreen;  border-radius: 15px;}
+        .wrong {background-color:red;  border-radius: 15px;}
+        /* Customize the label (the container) */
+        .container {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin: auto;
+            width: 50%;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 22px;
+        }
+
+        /* Hide the browser's default radio button */
+        .container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        /* Create a custom radio button */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+            border-radius: 50%;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .container:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the radio button is checked, add a blue background */
+        .container input:checked ~ .checkmark {
+            background-color: #2196F3;
+        }
+
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the indicator (dot/circle) when checked */
+        .container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        /* Style the indicator (dot/circle) */
+        .container .checkmark:after {
+            top: 9px;
+            left: 9px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .question{
+            position: relative;
+            font-size: 22px;
+            font-family: OCR A Std, monospace;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+        pre{
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+<div id="container_quizs">
+
+</div>
+<button type=button id="final_button" class="question" onclick="pass_score()">Back to Quizzes</button>
+<button type=button id="button1" class="question" onclick="check_radio()">Check Answer</button>
+<button type=button id="button2" class="question" onclick="show_question()">Next Question</button>
+<p id="message" class="question"></p>
+
+
+<script>
+    var questions
+    var questions_keys
+    var questions_code_keys
+    var answers
+    var i=0
+    var x=0
+    var correct=0
+    var language
+    $(document).ready(function(){
+        var lang={{lan|tojson}}
+        language=lang.toString()
+        var results={{q | safe}}
+        console.log(results)
+        questions = results["questions"]
+        answers = results["answers"]
+        console.log(questions)
+        questions_keys = Object.keys(questions)
+        show_question()
+
+
+    })
+    function show_question() {
+        $("#final_button").hide()
+        let tmp
+        $("#message").hide()
+        $("#button2").hide()
+        $("#button1").show()
+        $("#container_quizs").empty()
+        if (i < questions_keys.length) {
+            $("#container_quizs").append('<pre><code class="question"> "' + questions_keys[i] + '" </code></pre>')
+            for (let j = 0; j < questions[questions_keys[i]].length; j++) {
+                tmp=questions[questions_keys[i]][j].replace(/\s+/g,"_")
+                $("#container_quizs").append('<label class="container" class="center" id="'+tmp+'"> "' + questions[questions_keys[i]][j] + '" <input type="radio" name="input" value="'+questions[questions_keys[i]][j]+'"> <span class="checkmark"></span> </label>')
+            }
+            i = i + 1
+        }
+        if (i > questions_keys.length)  {
+            $("#button1").hide()
+            $("#message").text("Final score = " + correct)
+            $("#message").show()
+            $("#final_button").show()
+        }
+
+    }
+
+    function check_radio(){
+        let temp
+        $("#message").show()
+        if( $('input:radio', "#container_quizs").is(':checked')){
+            let checked = $('input[name="input"]:checked').val()
+            if (answers[x]==checked){
+                $("#message").text("Correct answer!")
+                correct++
+                temp=answers[x].replace(/\s+/g,"_")
+                let tmp=document.getElementById(temp)
+                tmp.classList.add("correct");
+                console.log(tmp)
+            }
+            else{
+                temp=answers[x].replace(/\s+/g,"_")
+                let tmp=document.getElementById(temp)
+                tmp.classList.add("wrong");
+                console.log(tmp)
+                $("#message").text("Wrong answer, the correct answer is : "+ answers[x])
+            }
+            x=x+1
+            $("#button1").hide()
+            $("#button2").show()
+        }
+        else{
+            $("#message").text("Choose an answer")
+        }
+        if (i == questions_keys.length) {
+            $("#button2").text("SHOW SCORE")
+            i++
+        }
+    }
+    function pass_score(){
+
+        $.ajax({
+            type : "POST",
+            url : "http://127.0.0.1:5000/save_score",
+            data: {
+                quest: questions_keys.length,
+                score: correct,
+                lan:language
+            },
+            success : function(data){
+                window.location.assign("{{url_for('games')}}")
+
+            }
+        })
+    }
+
+</script>
+</body>
+</html>

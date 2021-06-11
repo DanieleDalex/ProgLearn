@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> ProgLearn </title>
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta name="theme-color" content="orangered"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../static/css/Style.css">
+</head>
+<body>
+
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="{{url_for('languages')}}">Lessons</a>
+  <a href="{{url_for('games')}}">Games</a>
+  {% if session["username"] %}
+  <a id="register" href="{{url_for('profile',username=session['username'])}}">{{session["username"]}}</a>
+  <a id="login" href="{{url_for('logout')}}">Logout</a>
+  {% else %}
+  <a id="register" href="{{url_for('register')}}">Register</a>
+  <a id="login" href="{{url_for('login')}}">Login</a>
+  {% endif %}
+</div>
+
+<!-- Page content -->
+
+<header class="container red center" style="padding:128px">
+  <h1 id="title1" class="margin jumbo">ProgLearn</h1>
+  <h2> Learn coding, enjoy coding!</h2>
+  <button type="button" class="button black padding-large large margin-top" onclick="sposta('games')">Get Started</button>
+</header>
+
+<div class="row-padding padding-64 container blu2">
+  <div class="content">
+    <div class="twothird">
+      <h1>Do it simple!</h1>
+      <h5 class="padding-32"> The hardest way usually is not the best one.<br>
+        Learning to code is a path that can be simple if approached in the right way.<br>
+      In Proglearn we choose for you all the best videos to learn coding and then guide you through the practice.</h5>
+    </div>
+
+  </div>
+</div>
+
+<div class="row-padding light-grey padding-64 container blu">
+  <div class="content">
+
+    <div class="twothird">
+      <h1>Do it funny!</h1>
+      <h5 class="padding-32"> Learning can actually be funny.<br>
+      In Proglearn we've got lots of quizzes you can play to train your coding skills. <br>
+      Try to beat all of them!</h5>
+    </div>
+  </div>
+</div>
+<script src="../static/js/main.js"> </script>
+</body>
+</html>

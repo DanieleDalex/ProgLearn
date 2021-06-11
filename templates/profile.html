@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> Profile </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta name="theme-color" content="orangered"/>
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../static/css/Style.css">
+</head>
+<body>
+
+<div class="topnav">
+  <a href="{{url_for('root')}}">Home</a>
+  <a href="{{url_for('languages')}}">Lessons</a>
+  <a href="{{url_for('games')}}">Games</a>
+  {% if session["username"] %}
+  <a class="active" id="register" href="{{url_for('profile',username=session['username'])}}">{{session["username"]}}</a>
+  <a id="login" href="{{url_for('logout')}}">Logout</a>
+  {% else %}
+  <a id="register" href="{{url_for('register')}}">Register</a>
+  <a id="login" href="{{url_for('login')}}">Login</a>
+  {% endif %}
+</div>
+
+<!-- Page content -->
+
+<header class="container red" style="padding:128px">
+  <h1 id="title1" class="margin jumbo">{{session["username"]}}</h1>
+</header>
+
+<div class="row-padding padding-64 container steelblue">
+  <div class="content">
+    <div class="twothird">
+      <img class="logo2" src="../static/img/C_Logo.png" alt="C">
+    </div>
+    <h2 class="padding-32"> Your level : {{c_level}}</h2>
+  </div>
+</div>
+
+<div class="row-padding padding-64 container blu2">
+  <div class="content">
+    <div class="twothird">
+      <img class="logo2" src="../static/img/C++_logo.png" alt="C">
+    </div>
+    <h2 class="padding-32"> Your level : {{cplusplus_level}}</h2>
+  </div>
+</div>
+
+<div class="row-padding padding-64 container midnightblue">
+  <div class="content">
+    <div class="twothird">
+      <img class="logo2" src="../static/img/Java_logo.png" alt="C">
+    </div>
+    <h2 class="padding-32"> Your level : {{java_level}}</h2>
+  </div>
+</div>
+
+<div class="row-padding padding-64 container blu">
+  <div class="content">
+    <div class="twothird">
+      <img class="logo2" src="../static/img/Python_logo.png" alt="C">
+    </div>
+    <h2 class="padding-32"> Your level : {{python_level}}</h2>
+  </div>
+</div>
+
+<script src="../static/js/main.js"> </script>
+</body>
+</html>
