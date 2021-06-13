@@ -37,6 +37,11 @@ Open your browser (recommended Google Chrome) and digits:
 
 http://127.0.0.1:5000
 
+
+Presentation link
+https://drive.google.com/file/d/1jrD8MfyjAobolFd1AtpBDfc0f99M__eq/view?usp=sharing
+
+
 ## Creators
 Project made by Vincenzo Mele, Daniele d'Alessandro and Angelo Polizio
 For the Tec web exam at Parthenope University
